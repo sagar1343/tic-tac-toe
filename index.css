@@ -1,0 +1,35 @@
+:root {
+  font-size: 10px;
+  --grid-size: 53rem;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+h1 {
+  font-size: 5rem;
+  margin-block: 2rem;
+}
+.container {
+  border-color: white;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 12.5rem);
+  grid-template-rows: repeat(3, 12.5rem);
+}
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: tomato;
+  color: white;
+  font-size: x-large;
+}
