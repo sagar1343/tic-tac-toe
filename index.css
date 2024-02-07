@@ -1,14 +1,14 @@
 :root {
   font-size: 10px;
-  --grid-size: 53rem;
 }
 * {
   padding: 0;
   margin: 0;
 }
 main {
+  width: 100%;
   height: 100vh;
-  width: 100vw;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,11 +19,13 @@ h1 {
   margin-block: 2rem;
 }
 .container {
+  width: 50rem;
+  height: 50rem;
   border-color: white;
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(3, 12.5rem);
-  grid-template-rows: repeat(3, 12.5rem);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 .box {
   display: flex;
@@ -31,5 +33,33 @@ h1 {
   align-items: center;
   background-color: tomato;
   color: white;
+  font-size: xxx-large;
+  cursor: pointer;
+}
+
+.winPage {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1d3557;
+}
+.winPage h1 {
+  color: white;
+  font-size: 10rem;
+}
+#restart {
+  padding: 1rem 2rem;
+  background: dodgerblue;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 5px;
   font-size: x-large;
 }
