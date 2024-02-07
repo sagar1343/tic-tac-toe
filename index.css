@@ -13,8 +13,10 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: #a8dadc;
 }
 h1 {
+  text-align: center;
   font-size: 5rem;
   margin-block: 2rem;
 }
@@ -62,4 +64,20 @@ h1 {
   border: none;
   border-radius: 5px;
   font-size: x-large;
+}
+.material-symbols-outlined {
+  font-size: 100px;
+}
+
+@media screen and (max-width: 550px) {
+  .container {
+    width: 30rem;
+    height: 30rem;
+  }
+  .material-symbols-outlined {
+    font-size: 60px;
+  }
+  .winPage h1 {
+    font-size: 3rem;
+  }
 }

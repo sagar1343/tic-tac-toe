@@ -26,11 +26,15 @@ boxes.forEach((box) =>
 );
 function marking(box) {
   if (cross) {
-    box.innerText = "X";
+    box.innerHTML = `<span class="material-symbols-outlined">
+    close
+    </span>`;
     X.push(box.id);
     checkWinner(X, 1);
   } else {
-    box.innerText = "O";
+    box.innerHTML = `<span class="material-symbols-outlined">
+    circle
+    </span>`;
     O.push(box.id);
     checkWinner(O, 2);
   }
