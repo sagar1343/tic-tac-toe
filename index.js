@@ -1,18 +1,11 @@
-let cross = true;
-let X = [];
-let O = [];
 const winPage = document.querySelector(".winPage");
 const restart = document.getElementById("restart");
 const winnerName = document.querySelector("#winnerName");
 const boxes = document.querySelectorAll(".box");
 
-restart.addEventListener("click", () => location.reload());
-
-boxes.forEach((box) =>
-  box.addEventListener("click", (event) => marking(event.target), {
-    once: true,
-  })
-);
+let cross = true;
+let X = [];
+let O = [];
 let matrix = {
   1: [0, 0],
   2: [0, 1],
@@ -24,6 +17,13 @@ let matrix = {
   8: [2, 1],
   9: [2, 2],
 };
+
+restart.addEventListener("click", () => location.reload());
+boxes.forEach((box) =>
+  box.addEventListener("click", (event) => marking(event.target), {
+    once: true,
+  })
+);
 function marking(box) {
   if (cross) {
     box.innerText = "X";
@@ -34,6 +34,7 @@ function marking(box) {
     O.push(box.id);
     checkWinner(O, 2);
   }
+  checkTie(X, O);
   cross = !cross;
 }
 
@@ -47,6 +48,7 @@ function checkWinner(player, number) {
     winPage.style.bottom = 0;
     winnerName.innerHTML = `Player ${number} is Winner`;
   }
+
   function horizontalWin(playerArray) {
     let win = false;
     for (let j = 0; j < 3; j++) {
@@ -102,5 +104,11 @@ function checkWinner(player, number) {
       if (count == 3) win = true;
     }
     return win;
+  }
+}
+function checkTie(player1, player2) {
+  if (player1.length + player2.length == 9) {
+    winPage.style.bottom = 0;
+    winnerName.innerText = "Its a tie";
   }
 }
