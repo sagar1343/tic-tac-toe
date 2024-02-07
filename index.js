@@ -109,6 +109,6 @@ function checkWinner(player, number) {
 function checkTie(player1, player2) {
   if (player1.length + player2.length == 9) {
     winPage.style.bottom = 0;
-    winnerName.innerText = "Its a tie";
+    winnerName.innerText = "Draw!!!";
   }
 }
