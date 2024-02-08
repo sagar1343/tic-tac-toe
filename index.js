@@ -4,6 +4,7 @@ const winnerName = document.querySelector("#winnerName");
 const boxes = document.querySelectorAll(".box");
 
 let cross = true;
+let win = false;
 let X = [];
 let O = [];
 let matrix = {
@@ -31,12 +32,14 @@ function marking(box) {
     </span>`;
     X.push(box.id);
     checkWinner(X, 1);
+    checkTie(X, O);
   } else {
     box.innerHTML = `<span class="material-symbols-outlined">
     circle
     </span>`;
     O.push(box.id);
     checkWinner(O, 2);
+    checkTie(X, O);
   }
   checkTie(X, O);
   cross = !cross;
@@ -54,7 +57,6 @@ function checkWinner(player, number) {
   }
 
   function horizontalWin(playerArray) {
-    let win = false;
     for (let j = 0; j < 3; j++) {
       let count = 0;
       for (let i = 0; i < playerArray.length; i++) {
@@ -67,7 +69,6 @@ function checkWinner(player, number) {
     return win;
   }
   function verticalWin(playerArray) {
-    let win = false;
     for (let j = 0; j < 3; j++) {
       let count = 0;
       for (let i = 0; i < playerArray.length; i++) {
@@ -82,7 +83,6 @@ function checkWinner(player, number) {
     return win;
   }
   function diagonalWin(playerArray) {
-    let win = false;
     for (let j = 0; j < 3; j++) {
       let count = 0;
       for (let i = 0; i < playerArray.length; i++) {
@@ -96,7 +96,6 @@ function checkWinner(player, number) {
     return win;
   }
   function oppDiagonalWin(playerArray) {
-    let win = false;
     for (let j = 0; j < 3; j++) {
       let count = 0;
       for (let i = 0; i < playerArray.length; i++) {
@@ -111,7 +110,7 @@ function checkWinner(player, number) {
   }
 }
 function checkTie(player1, player2) {
-  if (player1.length + player2.length == 9) {
+  if (player1.length + player2.length == 9 && !win) {
     winPage.style.bottom = 0;
     winnerName.innerText = "Draw!!!";
   }
