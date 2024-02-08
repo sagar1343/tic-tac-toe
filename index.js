@@ -27,16 +27,12 @@ boxes.forEach((box) =>
 );
 function marking(box) {
   if (cross) {
-    box.innerHTML = `<span class="material-symbols-outlined">
-    close
-    </span>`;
+    box.innerHTML = `<i class="fa-solid fa-x"></i>`;
     X.push(box.id);
     checkWinner(X, 1);
     checkTie(X, O);
   } else {
-    box.innerHTML = `<span class="material-symbols-outlined">
-    circle
-    </span>`;
+    box.innerHTML = `<i class="fa-regular fa-circle"></i>`;
     O.push(box.id);
     checkWinner(O, 2);
     checkTie(X, O);
@@ -44,7 +40,6 @@ function marking(box) {
   checkTie(X, O);
   cross = !cross;
 }
-
 function checkWinner(player, number) {
   if (
     horizontalWin(player) ||
@@ -68,46 +63,46 @@ function checkWinner(player, number) {
     }
     return win;
   }
-  function verticalWin(playerArray) {
-    for (let j = 0; j < 3; j++) {
-      let count = 0;
-      for (let i = 0; i < playerArray.length; i++) {
-        if (matrix[playerArray[i]][1] == j) {
-          count++;
-        }
-      }
-      if (count == 3) {
-        win = true;
+}
+function verticalWin(playerArray) {
+  for (let j = 0; j < 3; j++) {
+    let count = 0;
+    for (let i = 0; i < playerArray.length; i++) {
+      if (matrix[playerArray[i]][1] == j) {
+        count++;
       }
     }
-    return win;
-  }
-  function diagonalWin(playerArray) {
-    for (let j = 0; j < 3; j++) {
-      let count = 0;
-      for (let i = 0; i < playerArray.length; i++) {
-        //(0,0),(1,1),(2,2)
-        if (matrix[playerArray[i]][0] == matrix[playerArray[i]][1]) {
-          count++;
-        }
-      }
-      if (count == 3) win = true;
+    if (count == 3) {
+      win = true;
     }
-    return win;
   }
-  function oppDiagonalWin(playerArray) {
-    for (let j = 0; j < 3; j++) {
-      let count = 0;
-      for (let i = 0; i < playerArray.length; i++) {
-        // (0,2),(1,1),(2,0)
-        if (matrix[playerArray[i]][0] + matrix[playerArray[i]][1] == 2) {
-          count++;
-        }
+  return win;
+}
+function diagonalWin(playerArray) {
+  for (let j = 0; j < 3; j++) {
+    let count = 0;
+    for (let i = 0; i < playerArray.length; i++) {
+      //(0,0),(1,1),(2,2)
+      if (matrix[playerArray[i]][0] == matrix[playerArray[i]][1]) {
+        count++;
       }
-      if (count == 3) win = true;
     }
-    return win;
+    if (count == 3) win = true;
   }
+  return win;
+}
+function oppDiagonalWin(playerArray) {
+  for (let j = 0; j < 3; j++) {
+    let count = 0;
+    for (let i = 0; i < playerArray.length; i++) {
+      // (0,2),(1,1),(2,0)
+      if (matrix[playerArray[i]][0] + matrix[playerArray[i]][1] == 2) {
+        count++;
+      }
+    }
+    if (count == 3) win = true;
+  }
+  return win;
 }
 function checkTie(player1, player2) {
   if (player1.length + player2.length == 9 && !win) {
